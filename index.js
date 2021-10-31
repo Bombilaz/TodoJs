@@ -2,20 +2,21 @@ let form = document.querySelector('.input');
 let input = document.querySelector('.setTodo');
 let todos = document.querySelector('.todos');
 let link = 'img/close.png';
-function getsmth(event){
+
+function createTask(event){
    event.preventDefault();
-   let elem1 = document.createElement('input');
-   let elem2 = document.createElement('img');
+   let leftElemOfBlock = document.createElement('input');
+   let rightElemOfBlock = document.createElement('img');
    let elemBlock = document.createElement('div');
    elemBlock.classList.add('task');
-   let elements = document.querySelectorAll('.task');
-   elem2.classList.add('delete');
-   elem2.setAttribute('src', link);
-   elem1.value = input.value;
+   rightElemOfBlock.classList.add('delete');
+   rightElemOfBlock.setAttribute('src', link);
+   leftElemOfBlock.value = input.value;
    todos.prepend(elemBlock);
-   elemBlock.prepend(elem2);
-   elemBlock.prepend(elem1);
+   elemBlock.prepend(rightElemOfBlock);
+   elemBlock.prepend(leftElemOfBlock);
    input.value = '';
+   let elements = document.querySelectorAll('.task');
    
    let buttons = document.querySelectorAll('.delete');
    for(let i = 0; i < elements.length; i++){
@@ -26,5 +27,5 @@ function getsmth(event){
    
 }
 
-form.addEventListener('submit', getsmth);
+form.addEventListener('submit', createTask);
 

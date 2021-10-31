@@ -49,8 +49,9 @@
   outline: none;
 } 
 .task{
-  
+  width: 300px;
   display: flex;
+  justify-content: space-between;
 }
 .task img{
   filter: invert(50%);
