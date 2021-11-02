@@ -38,20 +38,26 @@
   transform:rotate(-8deg);
 }
 .todos{
+  width: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.todos input{
-  border: 0;
+
+.todos div:focus{
+  border-radius: 5px;
+  border: 1px rgba(0, 0, 0, 0.39) solid;
 } 
-.todos input:focus{
-  outline: none;
-} 
-.task{
+.nametask{
+  cursor: pointer;
   width: 300px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+}
+.task{
+  width: 360px;
+  display: flex;
+  color: rgba(0, 0, 0, 0.788);
 }
 .task img{
   filter: invert(50%);
@@ -64,19 +70,37 @@
   margin: 20px;
 }
 .setTodo{
-  width: 300px;
+  width: 360px;
   height: 40px;
   font-weight:700;
+ 
   border-radius: 5px;
 }
 .stick{
   position: absolute;
   top: 75px;
   width: 550px;
-  /* border: 1px solid black; */
+ 
 }
 body{
-  
   justify-content: center;
   background: white;
+}
+.text_decoration{
+  text-decoration-line: line-through;
+}
+.undone{
+  background: url('../img/undone.png') no-repeat;
+  background-size:contain;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.done{
+  background: url('../img/done.png') no-repeat;
+  background-size:contain;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
