@@ -13,18 +13,33 @@
 </head>
 
 <body>
-  <div class="wrapper" >
+  <div class="wrapper">
 
     <img src="img/ref.png" onselectstart="return false" onmousedown="return false">
     <div class="content">
       <img class='stick' src="img/stick.png" onselectstart="return false" onmousedown="return false">
 
       <div class="todo">
-        <form class='input'>
-          <input class='setTodo'placeholder="I need to..." maxlength="25">
+        <form class='formForCreate'>
+          <input class='createNameForNewTask' placeholder="I need to..." maxlength='25'>
+          <button class="addNewTask">Add</button>
         </form>
-        <div class="todos" >
-          
+        <div class="popUpForForm">
+          <div class="text topAlertElements">Максимум символов</div>
+          <div class="counter topAlertElements">
+            <div class="currentLength topAlertElements">0</div>
+            <div class="maxLength topAlertElements">/25</div>
+          </div>
+        </div>
+        <div class="taskList">
+
+        </div>
+        <div class="popUpForMaxTask">
+          <div class="text2 bottomAlertElements">Максимум задач</div>
+          <div class="counter bottomAlertElements">
+            <div class="currentLengthTask bottomAlertElements">0</div>
+            <div class="maxLengthTask bottomAlertElements">/8</div>
+          </div>
         </div>
       </div>
 

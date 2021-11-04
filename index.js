@@ -1,54 +1,128 @@
-const form = document.querySelector('.input');
-const input = document.querySelector('.setTodo');
-const todos = document.querySelector('.todos');
-const link = 'img/close.png';
+const formCreateTask = document.querySelector('.formForCreate');
+const inputNewTaskName = document.querySelector('.createNameForNewTask');
+const divCountTaskName = document.querySelector('.currentLength');
+const divsMaxNameNewTask = document.querySelectorAll('.topAlertElements');
+const taskList = document.querySelector('.taskList');
+const tasksLength = document.querySelector('.currentLengthTask');
+const divsMaxTasks = document.querySelectorAll('.bottomAlertElements');
+const buttonForAddTask = document.querySelector('.addNewTask');
+let countTaskValue = 0;
 
+showCountTasks();
+setInterval(checkNewTaskNameLength, 30);
 
-const create = () =>{
-/* 
-   Создаем задачу(elemBlock) которая состоит из названия задачи
-   (rightElemOfBlock) и img иконки для удаления (leftElemOfBlock)
-   в виде переменных
-*/ const middleElemOfBlock = document.createElement('div');
-   const leftElemOfBlock = document.createElement('div');
-   const rightElemOfBlock = document.createElement('img');
-   const elemBlock = document.createElement('div');
-/*
-   Назначаем класс стилей главному блоку , класс иконке для удаления
-   и атрибут который содержит ссылку на иконку.
-*/
-   leftElemOfBlock.classList.add('nametask');
-   middleElemOfBlock.classList.add('undone');
-   elemBlock.classList.add('task');
-   leftElemOfBlock.setAttribute('maxlength', "25");
-   leftElemOfBlock.setAttribute('contenteditable', true);
-   
-   rightElemOfBlock.setAttribute('src', link);
-   rightElemOfBlock.onclick = function(){
-      elemBlock.remove();
-   }
-
-   leftElemOfBlock.innerHTML = input.value;
-   middleElemOfBlock.onclick = () =>{
-      middleElemOfBlock.classList.toggle('done');
-      leftElemOfBlock.classList.toggle('text_decoration');
-   }
-   
-   todos.prepend(elemBlock);
-   elemBlock.prepend(rightElemOfBlock);
-   elemBlock.prepend(middleElemOfBlock);
-   elemBlock.prepend(leftElemOfBlock);
-   input.value = '';
-}
+formCreateTask.addEventListener('submit', createTask);
 
 function createTask(event){
    event.preventDefault();
-   const elements = document.querySelectorAll('.task');
-   if(elements.length > 7){
+   if(countTaskValue > 7){
+      makeBackgroundColor(buttonForAddTask, 'red');
+      makeRedColor(divsMaxTasks , null);
+      setTimeout(makeBackgroundColor, 500, buttonForAddTask, 'black');
+      setTimeout(makeGreyColor, 500 , divsMaxTasks);
       return;
    }
    create();
+   countTaskValue++;
+   showCountTasks();
 }
 
-form.addEventListener('submit', createTask);
+function create(){
+
+   const statusTaskElem = document.createElement('div');
+   const taskNameElem = document.createElement('div');
+   const buttonDeleteTask = document.createElement('div');
+   const taskBlock = document.createElement('div');
+
+   addClass(taskNameElem, 'nametask');
+   addClass(buttonDeleteTask, 'delete');
+   addClass(statusTaskElem, 'undone');
+   addClass(taskBlock , 'task');
+   setAttributesTaskNameElem(taskNameElem);
+   deleteTask(buttonDeleteTask, taskBlock);
+   createTaskName(taskNameElem);
+   makeDone(statusTaskElem, taskNameElem, taskBlock);
+
+   addElemToApp(taskList, taskBlock);
+   addElemToApp(taskBlock, buttonDeleteTask);
+   addElemToApp(taskBlock, statusTaskElem);
+   addElemToApp(taskBlock, taskNameElem);
+   
+   inputNewTaskName.value = '';
+}
+
+function makeDone(statusElem , taskNameElem , taskBlock){
+   statusElem.onclick = ()=>{
+      if(statusElem.classList.contains('done')) {
+         return;
+      }
+      moveDownTask(taskBlock);
+      addClass(statusElem, 'done');
+      addClass(taskNameElem, 'text_decoration');
+   }
+}
+
+function deleteTask(clickElem, deleteElem){
+   clickElem.onclick = ()=>{
+      deleteElem.remove();
+      countTaskValue--;
+      showCountTasks();
+   }
+}
+
+function checkNewTaskNameLength(){
+   divCountTaskName.innerHTML = inputNewTaskName.value.length;
+   if(inputNewTaskName.value.length > 24){
+      makeRedColor(divsMaxNameNewTask , inputNewTaskName);
+      return;
+   }
+   makeGreyColor(divsMaxNameNewTask , inputNewTaskName);
+}
+
+function moveDownTask(element){
+   taskList.appendChild(element);
+}
+
+function addElemToApp(mainElem, prepend){
+   mainElem.prepend(prepend);
+}
+
+function createTaskName(element){
+   element.innerHTML = inputNewTaskName.value;
+}
+
+function showCountTasks(){
+   tasksLength.innerHTML = countTaskValue;
+}
+
+function setAttributesTaskNameElem(variable){
+   variable.setAttribute('maxlength', "25");
+   variable.setAttribute('contenteditable', true);
+}
+
+function addClass(elem , className){
+   elem.classList.add(className)
+}
+
+function makeBackgroundColor (elem, color){
+   elem.style.backgroundColor = color;
+}
+
+function makeRedColor (manyElems, one = null){
+   manyElems.forEach(element => element.style.color = 'red');
+   if(one != null){
+      one.style.color = 'red';
+   } 
+}
+
+function makeGreyColor (manyElems, one = null){
+   manyElems.forEach(element => element.style.color = 'rgba(0, 0, 0, 0.65)');
+   if(one != null){
+      one.style.color = 'rgba(0, 0, 0, 0.65)';
+   }
+}
+
+
+
+
 

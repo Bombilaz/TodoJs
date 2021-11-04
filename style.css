@@ -31,24 +31,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  -webkit-transform:rotate(10deg);
-  -moz-transform:rotate(10deg);
-  -o-transform:rotate(10deg);
-  -ms-transform:rotate(10deg);
+  -webkit-transform:rotate(-8deg);
+  -moz-transform:rotate(-8deg);
+  -o-transform:rotate(-8deg);
+  -ms-transform:rotate(-8deg);
   transform:rotate(-8deg);
 }
-.todos{
+.taskList{
+  transition: 10s;
   width: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.todos div:focus{
+.taskList div:focus{
   border-radius: 5px;
   border: 1px rgba(0, 0, 0, 0.39) solid;
 } 
 .nametask{
+  overflow: hidden;
   cursor: pointer;
   width: 300px;
   display: flex;
@@ -57,20 +59,57 @@
 .task{
   width: 360px;
   display: flex;
+  align-items: center;
   color: rgba(0, 0, 0, 0.788);
 }
-.task img{
-  filter: invert(50%);
+
+
+.formForCreate{
+  display: flex;
+  margin: 20px 20px 0px 20px;
 }
-.task img:hover{
-  cursor: pointer;
-  filter: invert(0%);
+.addNewTask{
+  border: none;
+  height: 39px;
+  padding: 0px 10px;
+  border-radius: 5px;
+  margin-left: 2px;
+  color: aliceblue;
+  background-color: black;
 }
-.input{
-  margin: 20px;
+.topAlertElements{
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
 }
-.setTodo{
-  width: 360px;
+.bottomAlertElements{
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+
+.popUpForMaxTask{
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  position: absolute;
+  left: 31px;
+  top: 405px;
+}
+
+.popUpForForm{
+  width: 318px;
+  position: relative;
+  left: -29px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.counter{
+  display: flex;
+  align-items: center;
+}
+.createNameForNewTask{
+  width: 320px;
   height: 40px;
   font-weight:700;
  
@@ -102,5 +141,14 @@ body{
   background-size:contain;
   width: 40px;
   height: 40px;
+  cursor: pointer;
+}
+.delete{
+  border: 2px rgb(73, 2, 2) solid;
+  border-radius: 5px;
+  background: url('../img/close.png') no-repeat;
+  background-size:contain;
+  width: 33.5px;
+  height: 33.5px;
   cursor: pointer;
 }
