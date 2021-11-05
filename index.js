@@ -6,10 +6,14 @@ const taskList = document.querySelector('.taskList');
 const tasksLength = document.querySelector('.currentLengthTask');
 const divsMaxTasks = document.querySelectorAll('.bottomAlertElements');
 const buttonForAddTask = document.querySelector('.addNewTask');
+
+
 let countTaskValue = 0;
+let arrayOfTasks = [];
 
 showCountTasks();
 setInterval(checkNewTaskNameLength, 30);
+
 
 formCreateTask.addEventListener('submit', createTask);
 
@@ -33,22 +37,36 @@ function create(){
    const taskNameElem = document.createElement('div');
    const buttonDeleteTask = document.createElement('div');
    const taskBlock = document.createElement('div');
-
+   
    addClass(taskNameElem, 'nametask');
    addClass(buttonDeleteTask, 'delete');
    addClass(statusTaskElem, 'undone');
    addClass(taskBlock , 'task');
+
    setAttributesTaskNameElem(taskNameElem);
    deleteTask(buttonDeleteTask, taskBlock);
    createTaskName(taskNameElem);
+   if(createTaskName(taskNameElem).trim() == ''){
+      countTaskValue--;
+      return;
+   }
    makeDone(statusTaskElem, taskNameElem, taskBlock);
-
+   
+   
    addElemToApp(taskList, taskBlock);
    addElemToApp(taskBlock, buttonDeleteTask);
    addElemToApp(taskBlock, statusTaskElem);
    addElemToApp(taskBlock, taskNameElem);
-   
+   pushNewElem();
    inputNewTaskName.value = '';
+}
+
+function pushNewElem(){
+   arrayOfTasks.push(
+      {
+         names : inputNewTaskName.value, 
+         status : 'undone',
+      })
 }
 
 function makeDone(statusElem , taskNameElem , taskBlock){
@@ -56,6 +74,7 @@ function makeDone(statusElem , taskNameElem , taskBlock){
       if(statusElem.classList.contains('done')) {
          return;
       }
+      console.log(statusElem);
       moveDownTask(taskBlock);
       addClass(statusElem, 'done');
       addClass(taskNameElem, 'text_decoration');
@@ -88,7 +107,7 @@ function addElemToApp(mainElem, prepend){
 }
 
 function createTaskName(element){
-   element.innerHTML = inputNewTaskName.value;
+   return element.innerHTML = inputNewTaskName.value;
 }
 
 function showCountTasks(){
@@ -96,8 +115,8 @@ function showCountTasks(){
 }
 
 function setAttributesTaskNameElem(variable){
-   variable.setAttribute('maxlength', "25");
    variable.setAttribute('contenteditable', true);
+   variable.setAttribute('onkeypress', "return (this.innerText.length <= 24)");
 }
 
 function addClass(elem , className){
