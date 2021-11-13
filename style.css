@@ -127,7 +127,7 @@ body{
   text-decoration-line: line-through;
 }
 .undone{
-  background: url('../img/undone.png') no-repeat;
+  background-image: url('img/undone.png') no-repeat;
   background-size:contain;
   width: 40px;
   height: 40px;
