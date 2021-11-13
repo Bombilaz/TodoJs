@@ -15,11 +15,11 @@
 <body>
   <div class="wrapper">
 
-    <img src="img/ref.png" onselectstart="return false" onmousedown="return false">
+    <img class='ref' src="img/ref.png" onselectstart="return false" onmousedown="return false" >
     <div class="content">
       <img class='stick' src="img/stick.png" onselectstart="return false" onmousedown="return false">
 
-      <div class="todo">
+      <div class="todo" >
         <form class='formForCreate'>
           <input class='createNameForNewTask' placeholder="I need to..." maxlength='25'>
           <button class="addNewTask">Add</button>
@@ -34,6 +34,10 @@
         <div class="taskList">
 
         </div>
+        <div class="taskListCompleted">
+
+        </div>
+       
         <div class="popUpForMaxTask">
           <div class="text2 bottomAlertElements">Максимум задач</div>
           <div class="counter bottomAlertElements">

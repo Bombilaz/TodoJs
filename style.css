@@ -63,7 +63,6 @@
   color: rgba(0, 0, 0, 0.788);
 }
 
-
 .formForCreate{
   display: flex;
   margin: 20px 20px 0px 20px;
@@ -85,7 +84,6 @@
   font-size: 14px;
   color: rgba(0, 0, 0, 0.65);
 }
-
 
 .popUpForMaxTask{
   display: flex;
@@ -129,7 +127,7 @@ body{
   text-decoration-line: line-through;
 }
 .undone{
-  background: url(img/undone.png) no-repeat;
+  background: url('../img/undone.png') no-repeat;
   background-size:contain;
   width: 40px;
   height: 40px;
@@ -137,7 +135,7 @@ body{
 }
 
 .done{
-  background: url(img/done.png) no-repeat;
+  background: url('../img/done1.png') no-repeat;
   background-size:contain;
   width: 40px;
   height: 40px;
@@ -146,9 +144,84 @@ body{
 .delete{
   border: 2px rgb(73, 2, 2) solid;
   border-radius: 5px;
-  background: url(img/close.png) no-repeat;
+  background: url('../img/close.png') no-repeat;
   background-size:contain;
   width: 33.5px;
   height: 33.5px;
   cursor: pointer;
 }
+
+@media screen and (min-width: 1000px){ 
+  .stick{
+    position: absolute;
+    top: 50px;
+    width: 370px;
+  }
+  .taskList{
+    width: 240px;
+    margin: 7px;
+  }
+  .todo{
+    position: absolute;
+    /* border: 1px solid black; */
+    width: 280px;
+    right: -130px;
+    height: 280px;
+    top: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .createNameForNewTask{
+    width: 210px;
+    height: 30px;
+    font-weight:700;
+    border-radius: 5px;
+  }
+  *{
+    font-size: 18px;
+  }
+  .undone{
+    width: 20px;
+    height: 20px;
+  }
+  .done{
+    width: 20px;
+    height: 20px;
+  }
+  .delete{
+    width: 17.5px;
+    height: 17.5px;
+  }
+  .addNewTask{
+    height: 30px;
+    padding: 0px 5px;
+  }
+  .formForCreate{
+    margin: 10px 10px 0px 10px;
+  }
+  .nametask{
+    width: 200px;
+  }
+  .task{
+    width: 240px;
+  }
+  .popUpForForm{
+    width: 200px;
+    left: -21px;
+    font-size: 10px;
+    margin-top: 2px;
+  }
+  .popUpForMaxTask{
+    width: 200px;
+    left: 21px;
+    top: 250px;
+  }
+  .topAlertElements{
+    font-size: 12px;
+  }
+  .bottomAlertElements{
+    font-size: 12px;
+  }
+} 
+  
