@@ -127,7 +127,7 @@ body{
   text-decoration-line: line-through;
 }
 .undone{
-  background-image: url('../img/undone.jpg') ;
+  background: url("img/undone.png") no-repeat;
   background-size:contain;
   width: 40px;
   height: 40px;
@@ -135,7 +135,7 @@ body{
 }
 
 .done{
-  background: url('../img/done1.png') no-repeat;
+  background: url("img/done1.png") no-repeat;
   background-size:contain;
   width: 40px;
   height: 40px;
@@ -144,14 +144,14 @@ body{
 .delete{
   border: 2px rgb(73, 2, 2) solid;
   border-radius: 5px;
-  background: url('../img/close.png') no-repeat;
+  background: url("img/close.png") no-repeat;
   background-size:contain;
   width: 33.5px;
   height: 33.5px;
   cursor: pointer;
 }
 
-@media screen and (min-width: 1000px){ 
+@media screen and (max-width: 1000px){ 
   .stick{
     position: absolute;
     top: 50px;
